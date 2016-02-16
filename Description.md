@@ -39,7 +39,7 @@ and I want to be able to modify the id3 tag properties on a given mp3 file.
 
 --------
 
-Sorter: as a user I want to be able to sort my mp3 files by the id3 tag properties.
+**Sorter**: as a user I want to be able to sort my mp3 files by the id3 tag properties.
 
 **Acceptance criteria**:
 * system asks which property (from a given list) should be the base of sorting:  

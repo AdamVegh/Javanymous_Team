@@ -6,12 +6,9 @@ import java.io.File;
 
 public class M3UHandler {
 
-	
-	public static File joinFiles (File m3u) {
-		return new File("");
-	}
-	
-	public static File parseM3u (File m3u) {
+	// main method:
+	public static File joinFiles(File m3u) {
+		// main steps come here
 		return new File("");
 	}
 	

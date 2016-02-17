@@ -8,8 +8,8 @@ public class M3UHandler {
 
 	// main method:
 	public static File joinFiles(File m3u) {
-		// main steps come here
-		return new File("");
+		M3UFile m3uFile = new M3UFile(m3u);
+		return m3uFile.process();
 	}
 	
 }

@@ -1,22 +1,24 @@
 package mp3_joiner;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
 import java.util.List;
 
 public class MP3File {
 
 	// member variables:
-	private byte[] content;
+	private byte[] body;
 	private byte[] tail;
 	
 	// constructors:
-	private MP3File(byte[] content, byte[] tail) {
-		this.content = content;
+	private MP3File(byte[] body, byte[] tail) {
+		this.body = body;
 		this.tail = tail;
 	}
 	
-	MP3File(File mp3) {
-		// mp3 file reading comes here
+	MP3File(File mp3) throws FileNotFoundException {
+		
 	}
 	
 	// other methods:
@@ -43,8 +45,8 @@ public class MP3File {
 	
 	MP3File join(MP3File other) {
 		
-		byte[] content = concat(this.content, other.content);
-		return new MP3File(content, other.tail);
+		byte[] body = concat(this.body, other.body);
+		return new MP3File(body, other.tail);
 	}
 	
 	static MP3File join(List<MP3File> listOfMP3Files) {

@@ -3,6 +3,9 @@
 # Our Data used by program:
 Data/
 
+# UML autosave:
+*.dia~
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

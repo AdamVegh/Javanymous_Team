@@ -2,28 +2,23 @@ package sorter;
 
 import java.io.File;
 
-public class GenreSorter extends Sorter {
-	
-	boolean ascending = true;
+import ID3Tag.Id3TagMp3;
 
+public class GenreSorter extends Sorter {
 	public GenreSorter(){
-	
 	}
 	
 	public GenreSorter(boolean ascending) {
-		this.ascending = ascending;
+		super();
 	}
-	
 	
 	@Override
 	public int compare(File o1, File o2) {
-		ID3Tag tag = ID3Tag.parse(ID3Tag.tail(o1));
-		ID3Tag tag2 = ID3Tag.parse(ID3Tag.tail(o2));
+		Id3TagMp3 tag = Id3TagMp3.parse(o1);
+		Id3TagMp3 tag2 = Id3TagMp3.parse(o2);
 		if (ascending) {
 			return tag.getGenre().compareToIgnoreCase(tag2.getGenre());
-
 		}
-
 		return -tag.getGenre().compareToIgnoreCase(tag2.getGenre());
 	}
 

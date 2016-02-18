@@ -8,9 +8,9 @@ import java.io.IOException;
 public class M3UHandler {
 
 	// main method:
-	public static File joinFiles(File m3uFile) throws IOException {
+	public static File joinMP3FilesFromM3U(File m3uFile) throws IOException {
 			M3UFile m3uData = new M3UFile(m3uFile);
-			return m3uData.process();
+			return m3uData.joinMP3Files();
 	}
 	
 }

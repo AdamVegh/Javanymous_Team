@@ -11,16 +11,15 @@ public class MP3Joiner {
 
 	// checker used for mp3 files:
 	public static boolean checkIfValidMP3(File mp3File) {
-		if (!mp3File.isFile())
-			return false;
-		String name = mp3File.getName();
-		return name.endsWith(".mp3") || name.endsWith(".MP3");
+		return mp3File.isFile() && mp3File.getName().toLowerCase().endsWith(".mp3");
 	}
 
 	// joiner function:
-	public static void join(List<File> sourceFileList, File destinationFile) throws IOException {
+	public static void joinFiles(List<File> sourceFileList, File destinationFile) throws IOException {
 		RandomAccessFile writerOfDestinationFile = new RandomAccessFile(destinationFile, "rws");
 		for (File sourceFile: sourceFileList) {
+			if (! checkIfValidMP3(sourceFile))
+				throw new IOException("Invalid mp3-file object");
 			append(sourceFile, writerOfDestinationFile);
 		}
 		writerOfDestinationFile.close();

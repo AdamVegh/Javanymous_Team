@@ -30,15 +30,12 @@ public class M3UFile {
 	
 	// m3u file-checker used by constructor:
 	public static boolean checkIfValidM3U(File m3uFile) {
-		if (!m3uFile.isFile())
-			return false;
-		String name = m3uFile.getName();
-		return name.endsWith(".m3u") || name.endsWith(".M3U");
+		return m3uFile.isFile() && m3uFile.getName().toLowerCase().endsWith(".m3u");
 	}
 	
 	// processor method:
-	public File process() throws IOException {
-		MP3Joiner.join(sourceFileList, destinationFile);
+	public File joinMP3Files() throws IOException {
+		MP3Joiner.joinFiles(sourceFileList, destinationFile);
 		return destinationFile;
 	}
 	

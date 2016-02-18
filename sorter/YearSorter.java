@@ -2,28 +2,24 @@ package sorter;
 
 import java.io.File;
 
+import ID3Tag.Id3TagMp3;
 
 public class YearSorter extends Sorter{
-	
-	boolean ascending = true;
-
 	public YearSorter() {
-	
 	}
 	
 	public YearSorter(boolean ascending) {
-		this.ascending = ascending;
+		super();
 	}
 
 	@Override
 	public int compare(File o1, File o2) {
-		ID3Tag tag = ID3Tag.parse(ID3Tag.tail(o1));
-		ID3Tag tag2 = ID3Tag.parse(ID3Tag.tail(o2));
-		int intTag = Integer.parseInt(tag.getYear());
-		int intTag2 = Integer.parseInt(tag2.getYear());
+		Id3TagMp3 tag = Id3TagMp3.parse(o1);
+		Id3TagMp3 tag2 = Id3TagMp3.parse(o2);
 		if (ascending) {
-		return intTag < intTag2 ? -1 : intTag == intTag2 ? 0 : 1;
-	}
-		return intTag < intTag2 ? 1 : intTag == intTag2 ? 0 : -1;
+			return tag.getYear() < tag2.getYear() ? -1 : tag.getYear() == tag2.getYear() ? 0 : 1;
+		}
+		return tag.getYear() < tag2.getYear() ? 1 : tag.getYear() == tag2.getYear() ? 0 : -1;
 
-	}}
+	}
+}

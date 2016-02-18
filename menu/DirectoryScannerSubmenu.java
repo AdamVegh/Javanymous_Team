@@ -4,17 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import directoryscanner.DirectoryScanner;
 import exceptions.PossibleExceptions;
+import userinput.UserInput;
 
-public class ModifyAnotherTag
-{	
+/*
+system asks which folder need to be investigated
+system warns the user if the given folder not exists
+system asks the user if he/she would collect files recursively
+system log out the relative path of mp3 files
+ */
+
+public class DirectoryScannerSubmenu
+{
+	public DirectoryScanner ds = new DirectoryScanner();
 	public void printMenu()
 	{
-//			Runtime.getRuntime().exec("cls");
 			System.out.println();
-			System.out.println("Would you like to modify another tag?");
+			System.out.println("Do you want to collect files at a given path?");
 			System.out.println("1. Yes");
 			System.out.println("2. No");
+			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
 	
@@ -23,12 +33,11 @@ public class ModifyAnotherTag
 	{
 		int menuPoint = userInput();
 		MainMenu mM = new MainMenu();
-		ModifySubmenu printMenu = new ModifySubmenu();
+		System.out.println();
 		switch (menuPoint)
 		{
 		case 1:
-			printMenu.printMenu();
-			printMenu.selectableMenuPoints();
+			ds.listFiles();
 			break;
 		case 2:
 			mM.printMenu();

@@ -1,4 +1,4 @@
-package ID3Tag;
+package id3tag;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -165,7 +165,7 @@ public class Id3TagMp3 {
     public static File getPathnameFromUser() throws IOException 
     {
     	BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Give the absolute path of the file u want to modify or check the id3tag:");
+        System.out.println("Add the absolute path of the file:");
         String s = bufferRead.readLine();
         if (testFileExistance(s)) {
         	File file = new File(s);
@@ -209,8 +209,7 @@ public class Id3TagMp3 {
     
     public static void main(String[] args) throws IOException 
     {	
-    	File testFile = new File("C:\\Test\\test.mp3");
-    	Id3TagMp3 testId3Tag = Id3TagMp3.parse(testFile);
+    	Id3TagMp3 testId3Tag = Id3TagMp3.parse(new File("C:\\Test\\test.mp3"));
     	testId3Tag.setTitle("HEYAYAYAAYAY");
     	testId3Tag.setYear("1994");
     	testId3Tag.getNewId3Tag();

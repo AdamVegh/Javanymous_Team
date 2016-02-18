@@ -1,36 +1,31 @@
 package menu;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
+import userinput.UserInput;
 
-public class ModifyAnotherTag
-{	
+public class M3USubmenu
+{
 	public void printMenu()
 	{
 //			Runtime.getRuntime().exec("cls");
 			System.out.println();
-			System.out.println("Would you like to modify another tag?");
-			System.out.println("1. Yes");
-			System.out.println("2. No");
+			System.out.println("Which M3U need to be progressed?");
+			System.out.println("M3U file path:" + UserInput.getInputFromUser());
+			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
-	
 	
 	public void selectableMenuPoints()
 	{
 		int menuPoint = userInput();
 		MainMenu mM = new MainMenu();
-		ModifySubmenu printMenu = new ModifySubmenu();
+		
 		switch (menuPoint)
 		{
 		case 1:
-			printMenu.printMenu();
-			printMenu.selectableMenuPoints();
-			break;
-		case 2:
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;

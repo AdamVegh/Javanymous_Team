@@ -13,7 +13,7 @@ public class MainMenu
 		while(true)
 		{
 			subM.printMenu();
-			subM.selectMenuPoint();
+			subM.selectableMenuPoints();
 		}
 	}
 	
@@ -25,39 +25,46 @@ public class MainMenu
 			System.out.println("1. Sort");
 			System.out.println("2. Modify");
 			System.out.println("3. M3U");
-			System.out.println("4. Exit");
+			System.out.println("4. Directory scanner");
+			System.out.println("5. Exit");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
 	
 	
-	public void selectMenuPoint()
+	public void selectableMenuPoints()
 	{
 		int menuPoint = userInput();
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
-		SorterSubMenu sorterPrintMenu = new SorterSubMenu();
+		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
+		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
 		switch (menuPoint)
 		{
 		case 1:
 			System.out.println("Sort submenu");
 			sorterPrintMenu.printMenu();
-			sorterPrintMenu.selectMenuPoint();
+			sorterPrintMenu.selectableMenuPoints();
 			break;
 		case 2:
 			System.out.println("Modify submenu");
 			modifyPrintMenu.printMenu();
-			modifyPrintMenu.selectMenuPoint();
+			modifyPrintMenu.selectableMenuPoints();
 			break;
 		case 3:
 			System.out.println("M3U submenu");
 			break;
 		case 4:
+			System.out.println("Directory scanner");
+			directoryScanning.printMenu();
+			directoryScanning.selectableMenuPoints();
+			break;
+		case 5:
 			System.exit(0);
 			break;
 		default:
 			PossibleExceptions.menuPointException();
 			this.printMenu();
-			this.selectMenuPoint();
+			this.selectableMenuPoints();
 			break;
 		}
 	}

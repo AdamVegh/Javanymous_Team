@@ -23,7 +23,7 @@ public class ModifySubmenu
 	}
 	
 	
-	public void selectMenuPoint()
+	public void selectableMenuPoints()
 	{
 		int menuPoint = userInput();
 		MainMenu mM = new MainMenu();
@@ -34,41 +34,41 @@ public class ModifySubmenu
 		case 1:
 			System.out.println("Title submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 2:
 			System.out.println("Artist submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 3:
 			System.out.println("Album submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 4:
 			System.out.println("Year submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 5:
 			System.out.println("Comment submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 6:
 			System.out.println("Genre submenu");
 			doYouWantToChange.printMenu();
-			doYouWantToChange.selectMenuPoint();
+			doYouWantToChange.selectableMenuPoints();
 			break;
 		case 7:
 			mM.printMenu();
-			mM.selectMenuPoint();
+			mM.selectableMenuPoints();
 			break;
 		default:
 			PossibleExceptions.menuPointException();
 			printMenu();
-			selectMenuPoint();
+			selectableMenuPoints();
 			break;
 		}
 	}

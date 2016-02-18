@@ -19,7 +19,7 @@ public class SaveTagMenu
 	}
 	
 	
-	public void selectMenuPoint()
+	public void selectableMenuPoints()
 	{
 		int menuPoint = userInput();
 		ModifySubmenu backToModifiableTags = new ModifySubmenu();
@@ -30,17 +30,17 @@ public class SaveTagMenu
 		case 1:
 			System.out.println("Tag has been saved!");
 			doYouWantToModify.printMenu();
-			doYouWantToModify.selectMenuPoint();
+			doYouWantToModify.selectableMenuPoints();
 			break;
 		case 2:
 			System.out.println("You didn't make changes on mp3 file tags.");
 			backToModifiableTags.printMenu();
-			backToModifiableTags.selectMenuPoint();
+			backToModifiableTags.selectableMenuPoints();
 			break;
 		default:
 			PossibleExceptions.menuPointException();
 			this.printMenu();
-			this.selectMenuPoint();
+			this.selectableMenuPoints();
 			break;
 		}
 	}

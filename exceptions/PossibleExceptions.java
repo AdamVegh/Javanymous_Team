@@ -1,7 +1,9 @@
 package exceptions;
 
-public class PossibleExceptions
+public class PossibleExceptions extends Exception
 {
+
+	private static final long serialVersionUID = 1L;
 	private static Throwable error;
 	
 	public static void titleException()

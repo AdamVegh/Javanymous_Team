@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
 
-public class SorterSubMenu
+public class SorterSubmenu
 {
 	public void printMenu()
 	{
@@ -25,7 +25,7 @@ public class SorterSubMenu
 	}
 	
 	
-	public void selectMenuPoint()
+	public void selectableMenuPoints()
 	{
 		int menuPoint = userInput();
 		MainMenu mM = new MainMenu();
@@ -52,12 +52,12 @@ public class SorterSubMenu
 			break;
 		case 7:
 			mM.printMenu();
-			mM.selectMenuPoint();
+			mM.selectableMenuPoints();
 			break;
 		default:
 			PossibleExceptions.menuPointException();
 			printMenu();
-			selectMenuPoint();
+			selectableMenuPoints();
 			break;
 		}
 	}

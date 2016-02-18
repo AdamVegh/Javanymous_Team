@@ -17,6 +17,7 @@ public class MP3Joiner {
 	// joiner function:
 	public static void joinFiles(List<File> sourceFileList, File destinationFile) throws IOException {
 		RandomAccessFile writerOfDestinationFile = new RandomAccessFile(destinationFile, "rws");
+		writerOfDestinationFile.setLength(0);
 		for (File sourceFile: sourceFileList) {
 			if (! checkIfValidMP3(sourceFile))
 				throw new IOException("Invalid mp3-file object");

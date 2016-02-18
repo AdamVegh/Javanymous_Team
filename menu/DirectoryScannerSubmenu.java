@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 import directoryscanner.DirectoryScanner;
 import exceptions.PossibleExceptions;
-import userinput.UserInput;
 
 /*
 system asks which folder need to be investigated

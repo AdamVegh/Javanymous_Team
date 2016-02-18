@@ -6,12 +6,13 @@ import java.io.IOException;
 
 public class MP3JoinerUI {
 	
-	public static void main(String[] args) {
-		System.out.println("Please tell me where I find the m3u-file.");
+	public void mp3JoinerGetInputFromUser()
+	{
 		Scanner consoleScanner = new Scanner(System.in);
 		File m3uFile;
 		String line;
 		while (true) {
+			System.out.println("Which M3U need to be progressed?:");
 			line = consoleScanner.nextLine();
 			m3uFile = new File(line);
 			if (M3UFile.checkIfValidM3U(m3uFile))

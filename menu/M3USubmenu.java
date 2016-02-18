@@ -4,16 +4,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
-import userinput.UserInput;
+import mp3_joiner.MP3JoinerUI;
 
 public class M3USubmenu
 {
 	public void printMenu()
 	{
+			MP3JoinerUI mp3Joiner = new MP3JoinerUI();
 //			Runtime.getRuntime().exec("cls");
 			System.out.println();
-			System.out.println("Which M3U need to be progressed?");
-			System.out.println("M3U file path:" + UserInput.getInputFromUser());
+			mp3Joiner.mp3JoinerGetInputFromUser();
+			System.out.println("1. Back");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}

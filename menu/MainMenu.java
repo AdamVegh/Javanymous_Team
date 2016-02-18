@@ -38,6 +38,7 @@ public class MainMenu
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
 		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
 		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
+		M3USubmenu m3uSubmenu = new M3USubmenu();
 		switch (menuPoint)
 		{
 		case 1:
@@ -52,6 +53,8 @@ public class MainMenu
 			break;
 		case 3:
 			System.out.println("M3U submenu");
+			m3uSubmenu.printMenu();
+			m3uSubmenu.selectableMenuPoints();
 			break;
 		case 4:
 			System.out.println("Directory scanner");

@@ -1,9 +1,10 @@
 package ID3Tag;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
-import java.util.Scanner;
 
 public class Id3TagMp3 {
 	
@@ -178,28 +179,32 @@ public class Id3TagMp3 {
                 + "\nYear: " + year + "\nComment: " + comment + "\nGenre: " + genre;
     }
     
-    public static File TestFileExistance(String pathname) 
+    public static boolean testFileExistance(String pathname) 
     {
     	File file = new File(pathname);
     	if (!file.exists()) 
     	{
 			System.out.println("File doesnt exists.");
+			return false;
 		}
     	else
     	{
 	    	System.out.println("File exists.");
-	    	return file;
+	    	return true;
 	    }
-    	return null;
 	}
     
-    public static String getPathnameFromUser() 
+    public static File getPathnameFromUser() throws IOException 
     {
-    	System.out.println("Give the absolute path of the file u want to modify or check the id3tag:");
-    	Scanner sc = new Scanner(System.in);
-    	while(sc.hasNext() ) System.out.println(sc.nextLine());
-    	sc.close();
-    	return sc.toString();
+    	BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Give the absolute path of the file u want to modify or check the id3tag:");
+        String s = bufferRead.readLine();
+        if (testFileExistance(s)) {
+        	File file = new File(s);
+        	return file;
+        }
+        getPathnameFromUser();
+        return null;
 	}
     
     protected static String fixTagLen(String tag) {
@@ -242,11 +247,11 @@ public class Id3TagMp3 {
 		return newID3Tag;
 		}
     
-    public void writeNewId3ToMp3(){
+    public void writeNewId3ToMp3(String path){
     	RandomAccessFile raff;
     	try 
     	{
-    		raff = new RandomAccessFile("C:\\Test\\The_Flamin_Groovies_-_05_-_Dont_Put_Me_On.mp3", "rw");
+    		raff = new RandomAccessFile(path, "rw");
     		raff.seek(raff.length()-128);
     		raff.writeBytes(getNewId3Tag());
     		raff.close();
@@ -258,14 +263,10 @@ public class Id3TagMp3 {
     }
     
     
-    public static void main(String[] args) 
-    {
-    	File bözsiFile = TestFileExistance("C:\\Test\\The_Flamin_Groovies_-_05_-_Dont_Put_Me_On.mp3");
-    	Id3TagMp3 bözsi = Id3TagMp3.parse(bözsiFile);
-    	bözsi.setComment("Anyad picshajaa");
-    	bözsi.setTitle("Zene nagyon zene nagyon nagyon zeneeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-    	System.out.println(new String(bözsi.getNewId3Tag()).length());
-    	System.out.println(new String(bözsi.getNewId3Tag()));
-    	bözsi.writeNewId3ToMp3();;
+    public static void main(String[] args) throws IOException 
+    {	
+    	File testFile = getPathnameFromUser();
+    	Id3TagMp3 testId3Tag = Id3TagMp3.parse(testFile);
+    	System.out.println(testId3Tag.toString());
     }
 }

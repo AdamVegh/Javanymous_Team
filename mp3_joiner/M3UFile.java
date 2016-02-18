@@ -31,7 +31,7 @@ public class M3UFile {
 		File actualSourceFile = null;
 		while ((line = reader.readLine()) != null) {
 			nonComment = line.startsWith("#") ? "" : line.split("#")[0];
-			if (nonComment.length() >= 0) {
+			if (nonComment.length() > 0) {
 				actualSourceFile = new File(nonComment);
 				if (!actualSourceFile.isFile() || !nonComment.endsWith(".mp3"))
 					throw new IOException("Wrong file reference in m3u file");

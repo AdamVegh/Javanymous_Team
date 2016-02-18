@@ -31,13 +31,13 @@ public class M3UFile {
 			String nonComment = null;
 			File actualSourceFile = null;
 			while ((line = reader.readLine()) != null) {
-				nonComment = line.startsWith("#") ? "" : line.split("#")[0];
-				if (nonComment.length() > 0) {
-					actualSourceFile = new File(nonComment);
-					if (! MP3Joiner.checkIfValidMP3(actualSourceFile))
-						throw new IOException("Wrong file reference in m3u file");
-					this.source.add(actualSourceFile);
-				}
+				if (line.startsWith("#"))
+					continue;
+				nonComment = line.split("#")[0];
+				actualSourceFile = new File(nonComment);
+				if (! MP3Joiner.checkIfValidMP3(actualSourceFile))
+					throw new IOException("Wrong file reference in m3u file");
+				this.source.add(actualSourceFile);
 			}
 		}	
 		reader.close();

@@ -12,20 +12,20 @@ import javax.swing.plaf.ActionMapUIResource;
 public class M3UFile {
 
 	// member variables:
-	private File m3u;
-	private File destination;
-	private List<File> source;
+	private File m3uFile;
+	private File destinationFile;
+	private List<File> sourceFileList;
 	
 	// constructor:
-	M3UFile(File m3u) throws IOException {
-		if (!checkIfValidM3U(m3u))
+	M3UFile(File m3uFile) throws IOException {
+		if (!checkIfValidM3U(m3uFile))
 			throw new IOException("Inappropriate m3u-file");
-		String m3uName = m3u.getName();
-		this.m3u = m3u;
+		String m3uName = m3uFile.getName();
+		this.m3uFile = m3uFile;
 		String destinationName = m3uName.substring(0, m3uName.length() - ".m3u".length()) + ".mp3"; 
-		this.destination = new File(destinationName);
-		BufferedReader reader = new BufferedReader(new FileReader(m3u));
-		this.source = new ArrayList<File>();
+		this.destinationFile = new File(destinationName);
+		BufferedReader reader = new BufferedReader(new FileReader(m3uFile));
+		this.sourceFileList = new ArrayList<File>();
 		{
 			String line = null;
 			String nonComment = null;
@@ -37,24 +37,24 @@ public class M3UFile {
 				actualSourceFile = new File(nonComment);
 				if (! MP3Joiner.checkIfValidMP3(actualSourceFile))
 					throw new IOException("Wrong file reference in m3u file");
-				this.source.add(actualSourceFile);
+				this.sourceFileList.add(actualSourceFile);
 			}
 		}	
 		reader.close();
 	}
 	
 	// m3u file-checker used by constructor:
-	static boolean checkIfValidM3U(File m3u) {
-		if (!m3u.isFile())
+	static boolean checkIfValidM3U(File m3uFile) {
+		if (!m3uFile.isFile())
 			return false;
-		String name = m3u.getName();
+		String name = m3uFile.getName();
 		return name.endsWith(".m3u") || name.endsWith(".M3U");
 	}
 	
 	// processor method:
 	File process() throws IOException {
-		MP3Joiner.join(source, destination);
-		return destination;
+		MP3Joiner.join(sourceFileList, destinationFile);
+		return destinationFile;
 	}
 	
 }

@@ -9,15 +9,15 @@ import java.util.List;
 public class MP3Joiner {
 
 	// checker used for mp3 files:
-	static boolean checkIfValidMP3(File mp3) {
-		if (!mp3.isFile())
+	static boolean checkIfValidMP3(File mp3File) {
+		if (!mp3File.isFile())
 			return false;
-		String name = mp3.getName();
+		String name = mp3File.getName();
 		return name.endsWith(".mp3") || name.endsWith(".MP3");
 	}
 
 	// joiner function:
-	static void join(List<File> source, File destination) throws IOException {
+	static void join(List<File> sourceFileList, File destinationFile) throws IOException {
 		
 	}
 	

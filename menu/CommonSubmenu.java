@@ -52,6 +52,8 @@ public class CommonSubmenu
 			break;
 		default:
 			PossibleExceptions.menuPointException();
+			printMenu();
+			selectMenuPoint();
 			break;
 		}
 	}

@@ -20,7 +20,7 @@ public class M3UFile {
 	M3UFile(File m3uFile) throws IOException {
 		if (!checkIfValidM3U(m3uFile))
 			throw new IOException("Inappropriate m3u-file");
-		String m3uName = m3uFile.getName();
+		String m3uName = m3uFile.getAbsolutePath();
 		this.m3uFile = m3uFile;
 		String destinationName = m3uName.substring(0, m3uName.length() - ".m3u".length()) + ".mp3"; 
 		this.destinationFile = new File(destinationName);

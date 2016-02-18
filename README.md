@@ -11,12 +11,12 @@ The name of our group is Javanymous. [Task description of our group can be found
 
 | Name			| GitHub UserName
 | ----			| ----
-| Bal·zs Benedek	| [benbal87](https://github.com/benbal87)
-| KristÛf		| []
-| M·tÈ SzabÛ		| []
-| ¡d·m VÈgh		| [AdamVegh](https://github.com/AdamVegh)
-| M·rton Ozsv·r		| [ozsvarmartoncc](https://github.com/ozsvarmartoncc)
-| D·niel Koics		| [KoicsD](https://github.com/KoicsD)
+| Bal√°zs Benedek	| [benbal87](https://github.com/benbal87)
+| Krist√≥f		| [Kristof95](https://github.com/Kristof95)
+| M√°t√© Szab√≥		| []
+| √Åd√°m V√©gh		| [AdamVegh](https://github.com/AdamVegh)
+| M√°rton Ozsv√°r		| [ozsvarmartoncc](https://github.com/ozsvarmartoncc)
+| D√°niel Koics		| [KoicsD](https://github.com/KoicsD)
 
 **Please, don't forget to have a look at Their GitHub Profile as well!**
 

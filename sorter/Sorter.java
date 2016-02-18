@@ -14,11 +14,6 @@ public abstract class Sorter implements Comparator<File> {
 	public void setAscending(boolean ascending) {
 		this.ascending = ascending;
 	}
-	
-
-	
-	
-	
 }
 
 

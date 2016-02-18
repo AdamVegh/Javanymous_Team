@@ -85,7 +85,10 @@ public class Id3TagMp3 {
     	{
     		this.title = title.substring(0, MAXLENGTH);
     	}
-        this.title = fixTagLen(title);
+    	else {
+    		this.title = fixTagLen(title);
+		}
+        
     }
     
     public String getArtist(){
@@ -95,7 +98,9 @@ public class Id3TagMp3 {
     	if (artist.length() > MAXLENGTH) {
     		this.artist = artist.substring(0,MAXLENGTH);
 		}
-    	this.artist = fixTagLen(artist);
+    	else {
+    		this.artist = fixTagLen(artist);
+		}
     }
     
     public String getAlbum() 
@@ -107,7 +112,10 @@ public class Id3TagMp3 {
         if (album.length() > MAXLENGTH) {
 			this.album = album.substring(0,MAXLENGTH);
 		}
-        this.album = fixTagLen(album);
+        else {
+        	this.album = fixTagLen(album);
+		}
+        
     }
     
     public int getYear() 
@@ -118,7 +126,10 @@ public class Id3TagMp3 {
         if (((int) Math.log10(year) + 1) > MAXLENGTHYEAR) {
         	this.year = Integer.parseInt(String.valueOf(year).substring(0, MAXLENGTHYEAR));
 		}
-        this.year = Integer.parseInt(fixYearLen(String.valueOf(year)));
+        else {
+        	this.year = Integer.parseInt(fixYearLen(String.valueOf(year)));
+		}
+        
     }
 
     public String getComment() 
@@ -129,7 +140,10 @@ public class Id3TagMp3 {
         if (comment.length() > 30) {
 			this.comment = comment.substring(0,MAXLENGTH);
 		}
-        this.comment = fixTagLen(comment);
+        else {
+        	this.comment = fixTagLen(comment);
+		}
+        
     }
     
     public String getGenre() 
@@ -232,7 +246,7 @@ public class Id3TagMp3 {
     	RandomAccessFile raff;
     	try 
     	{
-    		raff = new RandomAccessFile(getPathnameFromUser(), "rw");
+    		raff = new RandomAccessFile("C:\\Test\\The_Flamin_Groovies_-_05_-_Dont_Put_Me_On.mp3", "rw");
     		raff.seek(raff.length()-128);
     		raff.writeBytes(getNewId3Tag());
     		raff.close();
@@ -249,7 +263,9 @@ public class Id3TagMp3 {
     	File bözsiFile = TestFileExistance("C:\\Test\\The_Flamin_Groovies_-_05_-_Dont_Put_Me_On.mp3");
     	Id3TagMp3 bözsi = Id3TagMp3.parse(bözsiFile);
     	bözsi.setComment("Anyad picshajaa");
+    	bözsi.setTitle("Zene nagyon zene nagyon nagyon zeneeeeeeeeeeeeeeeeeeeeeeeeeeeee");
     	System.out.println(new String(bözsi.getNewId3Tag()).length());
+    	System.out.println(new String(bözsi.getNewId3Tag()));
     	bözsi.writeNewId3ToMp3();;
     }
 }

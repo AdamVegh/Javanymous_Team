@@ -11,12 +11,10 @@ public class Id3TagMp3 {
     private String title;
     private String artist;
     private String album;
-    private int year;
+    private String year;
     private String comment;
     private String genre;
     
-    private static final int MAXLENGTH = 30;
-    private static final int MAXLENGTHYEAR = 4;
     private static final String HEADER = "TAG";
     
     
@@ -45,7 +43,7 @@ public class Id3TagMp3 {
         byte[] baAlbum = readXBytes(last128, 63, 93);
         String album = new String(baAlbum).trim();
         byte[] baYear = readXBytes(last128, 93, 97);
-        int year = Integer.parseInt(new String(baYear).trim());
+        String year = new String(baYear).trim();
         byte[] baComment = readXBytes(last128, 97, 125);
         String comment = new String(baComment).trim();
         byte[] baGenre = readXBytes(last128, 127, 128);
@@ -82,26 +80,14 @@ public class Id3TagMp3 {
         return title;
     }
     public void setTitle(String title){
-    	if(title.length() > MAXLENGTH)
-    	{
-    		this.title = title.substring(0, MAXLENGTH);
-    	}
-    	else {
-    		this.title = fixTagLen(title);
-		}
-        
+    	this.title = title;
     }
     
     public String getArtist(){
         return artist;
     }
     public void setArtist(String artist){
-    	if (artist.length() > MAXLENGTH) {
-    		this.artist = artist.substring(0,MAXLENGTH);
-		}
-    	else {
-    		this.artist = fixTagLen(artist);
-		}
+    	this.artist = artist;
     }
     
     public String getAlbum() 
@@ -110,27 +96,15 @@ public class Id3TagMp3 {
     }
     public void setAlbum(String album) 
     {
-        if (album.length() > MAXLENGTH) {
-			this.album = album.substring(0,MAXLENGTH);
-		}
-        else {
-        	this.album = fixTagLen(album);
-		}
-        
+      this.album = album;
     }
     
-    public int getYear() 
+    public String getYear() 
     {
         return year;
     }
-    public void setYear(int year){
-        if (((int) Math.log10(year) + 1) > MAXLENGTHYEAR) {
-        	this.year = Integer.parseInt(String.valueOf(year).substring(0, MAXLENGTHYEAR));
-		}
-        else {
-        	this.year = Integer.parseInt(fixYearLen(String.valueOf(year)));
-		}
-        
+    public void setYear(String year){
+    	this.year = year;
     }
 
     public String getComment() 
@@ -138,13 +112,7 @@ public class Id3TagMp3 {
         return comment;
     }
     public void setComment(String comment) {
-        if (comment.length() > 30) {
-			this.comment = comment.substring(0,MAXLENGTH);
-		}
-        else {
-        	this.comment = fixTagLen(comment);
-		}
-        
+        this.comment = comment;
     }
     
     public String getGenre() 
@@ -207,32 +175,8 @@ public class Id3TagMp3 {
         return null;
 	}
     
-    protected static String fixTagLen(String tag) {
-		if (tag.length() < 30) {
-			String newString = tag;
-			int diff = 30 - tag.length();
-			while (diff > 0) {
-				newString += '\u0000';
-				diff -= 1;
-			}
-			return newString;
-		}
-		return tag;
-	}
-    public static String fixYearLen(String year) {
-		if (year.length() < 4) {
-			String newYear = year;
-			int diff = 4 - year.length();
-			while (diff > 0) {
-				newYear += '\u0000';
-				diff -= 1;
-			}
-			return newYear;
-		}
-		return year;
-	}
-    
     public String getNewId3Tag() {
+//    	CheckAndFixLenghts.fixingId3TagMp3Tags(this);
 		StringBuilder builder = new StringBuilder();
 		builder.append(HEADER);
 		builder.append(getTitle());
@@ -265,8 +209,12 @@ public class Id3TagMp3 {
     
     public static void main(String[] args) throws IOException 
     {	
-    	File testFile = getPathnameFromUser();
+    	File testFile = new File("C:\\Test\\test.mp3");
     	Id3TagMp3 testId3Tag = Id3TagMp3.parse(testFile);
+    	testId3Tag.setTitle("HEYAYAYAAYAY");
+    	testId3Tag.setYear("1994");
+    	testId3Tag.getNewId3Tag();
     	System.out.println(testId3Tag.toString());
+    	testId3Tag.writeNewId3ToMp3("C:\\Test\\test.mp3");
     }
 }

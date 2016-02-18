@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 
 public abstract class Sorter implements Comparator<File> {
-	boolean ascending = true;
+	private boolean ascending = true;
 
 	public boolean isAscending() {
 		return ascending;

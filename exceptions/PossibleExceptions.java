@@ -40,4 +40,10 @@ public class PossibleExceptions
 		System.out.println(error);
 	}
 	
+	public static void menuPointException()
+	{
+		error = new Throwable("Warning ,this menu option is out of range!");
+		System.out.println(error);
+	}
+	
 }

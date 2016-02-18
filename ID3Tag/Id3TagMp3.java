@@ -160,10 +160,10 @@ public class Id3TagMp3 {
     public boolean equals(Object o) 
     {
         Id3TagMp3 tag = (Id3TagMp3) o;
-        return ((title == null && tag.title == null) || title.equals(tag.title))
-                && ((artist == null && tag.artist == null) || artist.equals(tag.artist))
-                && ((album == null && tag.album == null) || album.equals(tag.album)) && (year == tag.year)
-                && ((comment == null && tag.comment == null) || comment.equals(tag.comment)) && (genre == tag.genre);
+        return ((title == null && tag.getTitle() == null) || title.equals(tag.getTitle()))
+                && ((artist == null && tag.getArtist() == null) || artist.equals(tag.getArtist()))
+                && ((album == null && tag.getAlbum() == null) || album.equals(tag.getAlbum())) && (year == tag.getYear())
+                && ((comment == null && tag.getComment() == null) || comment.equals(tag.getComment())) && (genre == tag.getGenre());
     }
     
     @Override

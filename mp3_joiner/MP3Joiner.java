@@ -20,11 +20,11 @@ public class MP3Joiner {
 
 	// joiner function:
 	static void join(List<File> sourceFileList, File destinationFile) throws IOException {
-		RandomAccessFile writer = new RandomAccessFile(destinationFile, "rws");
+		RandomAccessFile writerOfDestinationFile = new RandomAccessFile(destinationFile, "rws");
 		for (File sourceFile: sourceFileList) {
-			append(sourceFile, writer);
+			append(sourceFile, writerOfDestinationFile);
 		}
-		writer.close();
+		writerOfDestinationFile.close();
 	}
 	
 	private static void append(File sourceFile, RandomAccessFile writerOfDestinationFile) throws IOException {

@@ -10,7 +10,7 @@ public class MP3Joiner {
 	private static final int SIZE_OF_BUFFER = (1 << 20);
 
 	// checker used for mp3 files:
-	static boolean checkIfValidMP3(File mp3File) {
+	public static boolean checkIfValidMP3(File mp3File) {
 		if (!mp3File.isFile())
 			return false;
 		String name = mp3File.getName();
@@ -18,7 +18,7 @@ public class MP3Joiner {
 	}
 
 	// joiner function:
-	static void join(List<File> sourceFileList, File destinationFile) throws IOException {
+	public static void join(List<File> sourceFileList, File destinationFile) throws IOException {
 		RandomAccessFile writerOfDestinationFile = new RandomAccessFile(destinationFile, "rws");
 		for (File sourceFile: sourceFileList) {
 			append(sourceFile, writerOfDestinationFile);

@@ -15,7 +15,7 @@ public class M3UFile {
 	private List<File> sourceFileList;
 	
 	// constructor:
-	M3UFile(File m3uFile) throws IOException {
+	public M3UFile(File m3uFile) throws IOException {
 		if (!checkIfValidM3U(m3uFile))
 			throw new IOException("Inappropriate m3u-file");
 		this.m3uFile = m3uFile; 
@@ -24,12 +24,12 @@ public class M3UFile {
 	}
 	
 	// getters:
-	File getM3UFile() { return m3uFile; }
-	File getDestinationFile() { return destinationFile; }
-	List<File> getSourceFileList() { return sourceFileList; }
+	public File getM3UFile() { return m3uFile; }
+	public File getDestinationFile() { return destinationFile; }
+	public List<File> getSourceFileList() { return sourceFileList; }
 	
 	// m3u file-checker used by constructor:
-	static boolean checkIfValidM3U(File m3uFile) {
+	public static boolean checkIfValidM3U(File m3uFile) {
 		if (!m3uFile.isFile())
 			return false;
 		String name = m3uFile.getName();
@@ -37,7 +37,7 @@ public class M3UFile {
 	}
 	
 	// processor method:
-	File process() throws IOException {
+	public File process() throws IOException {
 		MP3Joiner.join(sourceFileList, destinationFile);
 		return destinationFile;
 	}

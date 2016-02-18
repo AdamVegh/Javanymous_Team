@@ -14,18 +14,22 @@ public class SorterMenu {
 	
 	public SorterMenu(List<File> mp3List) {
 		this.mp3List = mp3List;
-		boolean ascending;
+		Boolean ascending = true;
 		
-		String propertyStr = null;
+		String propertyStr = "";
 		boolean propertyOK = false;
 		while (!propertyOK) {
-			System.out.println("Please type in the property: ");
+			System.out.print("Please type in the property: ");
+			for (String string : listProperty) {
+				System.out.print(" | " + string);
+			}
+			System.out.println(" | ");
 			Scanner input = new Scanner(System.in);
 			propertyStr = propertyChecker(input.nextLine().toLowerCase());
 			propertyOK = (propertyStr != "");
 		}
 		
-		String ascendingStr = null;
+		String ascendingStr = "";
 		boolean ascendingOK = false;
 		while (!ascendingOK) {
 			System.out.println("Direction of soring: [A]scending or [D]escending");
@@ -33,17 +37,21 @@ public class SorterMenu {
 			ascendingStr = input.nextLine().toLowerCase();
 			ascendingOK = (ascendingStr.equals("a") || ascendingStr.equals("d"));
 		}
-		
 		ascending = ascendingStr.equals("a") ? true : false;
 		
 		Sorter sortedBy = sortedBy(propertyStr, ascending);
 		
 		mp3List.sort(sortedBy);
 		
+		System.out.print("absoulte path");
+		for (String string : listProperty) {
+			System.out.print(" | " + string);
+		}
+		System.out.println(" | ");
 		for (File mp3 : mp3List) {
-			System.out.println(mp3.getAbsolutePath() + "\t" + Id3TagMp3.parse(mp3).getTitle() + 
-					"\t" + Id3TagMp3.parse(mp3).getArtist() + "\t" + Id3TagMp3.parse(mp3).getAlbum() + 
-					"\t" + Id3TagMp3.parse(mp3).getYear() + "\t" + Id3TagMp3.parse(mp3).getGenre());
+			System.out.println(mp3.getAbsolutePath() + " | " + Id3TagMp3.parse(mp3).getTitle() + 
+					" | " + Id3TagMp3.parse(mp3).getArtist() + " | " + Id3TagMp3.parse(mp3).getAlbum() + 
+					" | " + Id3TagMp3.parse(mp3).getYear() + " | " + Id3TagMp3.parse(mp3).getGenre());
 		}
 		
 	}

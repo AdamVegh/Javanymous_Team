@@ -7,6 +7,8 @@ import java.util.List;
 // This class should create mp3 file object list and then join them to one object. 
 
 public class M3UHandler {
+	
+	private M3UHandler(){}
 
 	// main method:
 	public static File joinMP3FilesFromM3U(File m3uFile) throws JoinerException {

@@ -27,6 +27,7 @@ public class SorterSubMenu
 	
 	public void selectableMenuPoints()
 	{
+		String property = UserInput.getPropertyInput();
 		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		boolean ascending;

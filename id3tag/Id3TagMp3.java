@@ -1,4 +1,4 @@
-package ID3Tag;
+package id3tag;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -147,36 +147,8 @@ public class Id3TagMp3 {
                 + "\nYear: " + year + "\nComment: " + comment + "\nGenre: " + genre;
     }
     
-    public static boolean testFileExistance(String pathname) 
-    {
-    	File file = new File(pathname);
-    	if (!file.exists()) 
-    	{
-			System.out.println("File doesnt exists.");
-			return false;
-		}
-    	else
-    	{
-	    	System.out.println("File exists.");
-	    	return true;
-	    }
-	}
-    
-    public static File getPathnameFromUser() throws IOException 
-    {
-    	BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Add the absolute path of the file:");
-        String s = bufferRead.readLine();
-        if (testFileExistance(s)) {
-        	File file = new File(s);
-        	return file;
-        }
-        getPathnameFromUser();
-        return null;
-	}
-    
     public String getNewId3Tag() {
-//    	CheckAndFixLenghts.fixingId3TagMp3Tags(this);
+    	CheckAndFixLenghts.fixingId3TagMp3Tags(this);
 		StringBuilder builder = new StringBuilder();
 		builder.append(HEADER);
 		builder.append(getTitle());
@@ -188,6 +160,7 @@ public class Id3TagMp3 {
 //		builder.append("\u0000");
 		builder.append(getGenre());
 		String newID3Tag = builder.toString();
+		System.out.println(newID3Tag);
 		return newID3Tag;
 		}
     

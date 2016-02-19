@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
+import id3tag.Id3TagMp3;
 
 public class SaveTagMenu
 {
+
+
 	public void printMenu()
 	{
 //			Runtime.getRuntime().exec("cls");
@@ -21,18 +24,19 @@ public class SaveTagMenu
 	
 	public void selectableMenuPoints()
 	{
-		String menuPoint = userInput();
+		int menuPoint = userInput();
 		ModifySubmenu backToModifiableTags = new ModifySubmenu();
 		ModifyAnotherTag doYouWantToModify = new ModifyAnotherTag();
 		
 		switch (menuPoint)
 		{
-		case "1":
+		case 1:
+			ModifySubmenu.id3tag.writeNewId3ToMp3(ModifySubmenu.filePath);
 			System.out.println("Tag has been saved!");
 			doYouWantToModify.printMenu();
 			doYouWantToModify.selectableMenuPoints();
 			break;
-		case "2":
+		case 2:
 			System.out.println("You didn't make changes on mp3 file tags.");
 			backToModifiableTags.printMenu();
 			backToModifiableTags.selectableMenuPoints();
@@ -45,7 +49,7 @@ public class SaveTagMenu
 		}
 	}
 	
-	public String userInput()
+	public int userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -63,6 +67,6 @@ public class SaveTagMenu
 			System.out.println(e.toString());
 		}
 	      
-		return s;
+		return Integer.parseInt(s);
 	}
 }

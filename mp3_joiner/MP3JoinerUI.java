@@ -28,8 +28,7 @@ public class MP3JoinerUI {
 			System.out.println("Destination file path:");
 			System.out.println(destinationFile.getAbsolutePath());
 		}
-		catch (IOException exception) {
-			System.out.println("An exception occoured during the process:");
+		catch (JoinerException exception) {
 			System.out.println(exception.getMessage());
 		}
 	}

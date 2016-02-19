@@ -9,13 +9,13 @@ import java.util.List;
 public class M3UHandler {
 
 	// main method:
-	public static File joinMP3FilesFromM3U(File m3uFile) throws IOException {
+	public static File joinMP3FilesFromM3U(File m3uFile) throws JoinerException {
 		M3UFile m3uData = new M3UFile(m3uFile);
 		return m3uData.joinMP3Files();
 	}
 	
 	// another accessory:
-	public static List<File> getMP3FileListFromM3U(File m3uFile) throws IOException {
+	public static List<File> getMP3FileListFromM3U(File m3uFile) throws JoinerException {
 		M3UFile m3uData = new M3UFile(m3uFile);
 		return m3uData.getSourceFileList();
 	}

@@ -15,12 +15,18 @@ public class M3UFile {
 	private List<File> sourceFileList;
 
 	// constructor:
-	public M3UFile(File m3uFile) throws IOException {
-		if (!checkIfValidM3U(m3uFile))
-			throw new IOException("Inappropriate m3u-file");
-		this.m3uFile = m3uFile;
-		this.destinationFile = createDestinationFileObj(m3uFile);
-		this.sourceFileList = parseM3UFile(m3uFile);
+	public M3UFile(File m3uFile) throws JoinerException {
+		try {
+			if (!checkIfValidM3U(m3uFile))
+				throw new JoinerException("Inappropriate m3u-file:\n" + m3uFile.getAbsolutePath());
+			this.m3uFile = m3uFile;
+			this.destinationFile = createDestinationFileObj(m3uFile);
+			this.sourceFileList = parseM3UFile(m3uFile);
+			ensureSourceFileListIsValid();
+		}
+		catch (IOException exception) {
+			throw new JoinerException("An IOException occoured:\n" + exception.toString());
+		}
 	}
 
 	// getters:
@@ -42,9 +48,14 @@ public class M3UFile {
 	}
 
 	// processor method:
-	public File joinMP3Files() throws IOException {
-		MP3Joiner.joinFiles(sourceFileList, destinationFile);
-		return destinationFile;
+	public File joinMP3Files() throws JoinerException {
+		try {
+			MP3Joiner.joinFiles(sourceFileList, destinationFile);
+			return destinationFile;
+		}
+		catch (IOException exception) {
+			throw new JoinerException("An IOException occoured:\n" + exception.toString());
+		}
 	}
 
 	// other assistant functions used by constructor:
@@ -66,13 +77,21 @@ public class M3UFile {
 					continue;
 				nonComment = line.split("#")[0];
 				actualSourceFile = new File(nonComment);
-				if (!MP3Joiner.checkIfValidMP3(actualSourceFile))
-					throw new IOException("Wrong file reference in m3u file");
 				sourceFileList.add(actualSourceFile);
 			}
 		}
 		reader.close();
 		return sourceFileList;
+	}
+	
+	private void ensureSourceFileListIsValid() throws JoinerException {
+		if (sourceFileList.size() > 0) {
+			String message = "Invalid mp3-files on list:";
+			for (File file: sourceFileList) {
+				message += "\n" + file.getAbsolutePath();
+			}
+			throw new JoinerException(message);
+		}
 	}
 
 }

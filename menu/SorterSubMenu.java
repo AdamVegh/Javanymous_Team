@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
 
-public class SorterSubmenu
+public class SorterSubMenu
 {
 	public void printMenu()
 	{

@@ -36,7 +36,7 @@ public class MainMenu
 	{
 		String menuPoint = userInput();
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
-		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
+		SorterSubMenu sorterPrintMenu = new SorterSubMenu();
 		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
 		M3USubmenu m3uSubmenu = new M3USubmenu();
 		

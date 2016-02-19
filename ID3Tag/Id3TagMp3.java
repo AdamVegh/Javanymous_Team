@@ -1,4 +1,4 @@
-package id3tag;
+package ID3Tag;
 
 import java.io.BufferedReader;
 import java.io.File;

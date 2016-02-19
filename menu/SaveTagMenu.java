@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 import exceptions.PossibleExceptions;
 
-public class SaveTagmenu
+public class SaveTagMenu
 {
 	public void printMenu()
 	{

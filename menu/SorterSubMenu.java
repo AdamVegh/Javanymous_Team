@@ -34,21 +34,33 @@ public class SorterSubMenu
 		{
 		case 1:
 			System.out.println("Title submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 2:
 			System.out.println("Artist submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 3:
 			System.out.println("Album submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 4:
 			System.out.println("Year submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 5:
 			System.out.println("Comment submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 6:
 			System.out.println("Genre submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		case 7:
 			mM.printMenu();
@@ -56,8 +68,8 @@ public class SorterSubMenu
 			break;
 		default:
 			PossibleExceptions.menuPointException();
-			printMenu();
-			selectableMenuPoints();
+			this.printMenu();
+			this.selectableMenuPoints();
 			break;
 		}
 	}

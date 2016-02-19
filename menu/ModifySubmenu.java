@@ -15,8 +15,9 @@ public class ModifySubmenu
 			System.out.println("2. Artist");
 			System.out.println("3. Album");
 			System.out.println("4. Year");
-			System.out.println("5. Genre");
-			System.out.println("6. Back");
+			System.out.println("5. Comment");
+			System.out.println("6. Genre");
+			System.out.println("7. Back");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
@@ -51,11 +52,16 @@ public class ModifySubmenu
 			doYouWantToChange.selectableMenuPoints();
 			break;
 		case "5":
-			System.out.println("Genre submenu");
+			System.out.println("Comment submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
 		case "6":
+			System.out.println("Genre submenu");
+			doYouWantToChange.printMenu();
+			doYouWantToChange.selectableMenuPoints();
+			break;
+		case "7":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;

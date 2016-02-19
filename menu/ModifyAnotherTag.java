@@ -21,16 +21,16 @@ public class ModifyAnotherTag
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		ModifySubmenu printMenu = new ModifySubmenu();
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			printMenu.printMenu();
 			printMenu.selectableMenuPoints();
 			break;
-		case 2:
+		case "2":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;
@@ -42,7 +42,7 @@ public class ModifyAnotherTag
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -60,6 +60,6 @@ public class ModifyAnotherTag
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

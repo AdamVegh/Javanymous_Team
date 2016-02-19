@@ -30,15 +30,15 @@ public class DirectoryScannerSubmenu
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		System.out.println();
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			ds.listFiles();
 			break;
-		case 2:
+		case "2":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;
@@ -50,7 +50,7 @@ public class DirectoryScannerSubmenu
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -68,6 +68,6 @@ public class DirectoryScannerSubmenu
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

@@ -27,42 +27,42 @@ public class SorterSubmenu
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			System.out.println("Title submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 2:
+		case "2":
 			System.out.println("Artist submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 3:
+		case "3":
 			System.out.println("Album submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 4:
+		case "4":
 			System.out.println("Year submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 5:
+		case "5":
 			System.out.println("Comment submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 6:
+		case "6":
 			System.out.println("Genre submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
-		case 7:
+		case "7":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;
@@ -74,7 +74,7 @@ public class SorterSubmenu
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -91,6 +91,6 @@ public class SorterSubmenu
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

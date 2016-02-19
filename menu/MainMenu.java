@@ -34,34 +34,35 @@ public class MainMenu
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
 		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
 		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
 		M3USubmenu m3uSubmenu = new M3USubmenu();
+		
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			System.out.println("Sort submenu");
 			sorterPrintMenu.printMenu();
 			sorterPrintMenu.selectableMenuPoints();
 			break;
-		case 2:
+		case "2":
 			System.out.println("Modify submenu");
 			modifyPrintMenu.printMenu();
 			modifyPrintMenu.selectableMenuPoints();
 			break;
-		case 3:
+		case "3":
 			System.out.println("M3U submenu");
 			m3uSubmenu.printMenu();
 			m3uSubmenu.selectableMenuPoints();
 			break;
-		case 4:
+		case "4":
 			System.out.println("Directory scanner");
 			directoryScanning.printMenu();
 			directoryScanning.selectableMenuPoints();
 			break;
-		case 5:
+		case "5":
 			System.exit(0);
 			break;
 		default:
@@ -72,7 +73,7 @@ public class MainMenu
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -90,6 +91,6 @@ public class MainMenu
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

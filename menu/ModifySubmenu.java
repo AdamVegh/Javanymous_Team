@@ -25,43 +25,43 @@ public class ModifySubmenu
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		SaveTagMenu doYouWantToChange = new SaveTagMenu();
 		
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			System.out.println("Title submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 2:
+		case "2":
 			System.out.println("Artist submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 3:
+		case "3":
 			System.out.println("Album submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 4:
+		case "4":
 			System.out.println("Year submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 5:
+		case "5":
 			System.out.println("Comment submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 6:
+		case "6":
 			System.out.println("Genre submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case 7:
+		case "7":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;
@@ -73,7 +73,7 @@ public class ModifySubmenu
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -91,6 +91,6 @@ public class ModifySubmenu
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

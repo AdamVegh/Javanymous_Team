@@ -14,6 +14,8 @@ public class M3USubmenu
 //			Runtime.getRuntime().exec("cls");
 			System.out.println();
 			mp3Joiner.mp3JoinerGetInputFromUser();
+//			this.printMenu();
+//			this.selectableMenuPoints();
 			System.out.println("1. Back");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
@@ -21,12 +23,12 @@ public class M3USubmenu
 	
 	public void selectableMenuPoints()
 	{
-		int menuPoint = userInput();
+		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
 		
 		switch (menuPoint)
 		{
-		case 1:
+		case "1":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;
@@ -38,7 +40,7 @@ public class M3USubmenu
 		}
 	}
 	
-	public int userInput()
+	public String userInput()
 	{
 		BufferedReader bufferRead;
 		System.out.println();
@@ -56,6 +58,6 @@ public class M3USubmenu
 			System.out.println(e.toString());
 		}
 	      
-		return Integer.parseInt(s);
+		return s;
 	}
 }

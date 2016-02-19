@@ -3,11 +3,10 @@ package menu;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import userinput.*;
 
 import exceptions.PossibleExceptions;
 
-public class SorterSubMenu
+public class SorterSubmenu
 {
 	public void printMenu()
 	{
@@ -18,8 +17,9 @@ public class SorterSubMenu
 			System.out.println("2. Artist");
 			System.out.println("3. Album");
 			System.out.println("4. Year");
-			System.out.println("5. Genre");
-			System.out.println("6. Back");
+			System.out.println("5. Comment");
+			System.out.println("6. Genre");
+			System.out.println("7. Back");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
@@ -29,46 +29,40 @@ public class SorterSubMenu
 	{
 		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
-		boolean ascending;
 		
 		switch (menuPoint)
 		{
 		case "1":
 			System.out.println("Title submenu");
-			ascending = UserInput.getAscendingInput();
-			
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
 		case "2":
 			System.out.println("Artist submenu");
-			ascending = UserInput.getAscendingInput();
-			
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
 		case "3":
 			System.out.println("Album submenu");
-			ascending = UserInput.getAscendingInput();
-			
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
 		case "4":
 			System.out.println("Year submenu");
-			ascending = UserInput.getAscendingInput();
-			
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
 		case "5":
-			System.out.println("Genre submenu");
-			ascending = UserInput.getAscendingInput();
-			
+			System.out.println("Comment submenu");
 			this.printMenu();
 			this.selectableMenuPoints();
 			break;
 		case "6":
+			System.out.println("Genre submenu");
+			this.printMenu();
+			this.selectableMenuPoints();
+			break;
+		case "7":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;

@@ -160,7 +160,6 @@ public class Id3TagMp3 {
 //		builder.append("\u0000");
 		builder.append(getGenre());
 		String newID3Tag = builder.toString();
-		System.out.println(newID3Tag);
 		return newID3Tag;
 		}
     

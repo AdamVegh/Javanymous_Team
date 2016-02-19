@@ -51,16 +51,11 @@ public class ModifySubmenu
 			doYouWantToChange.selectableMenuPoints();
 			break;
 		case "5":
-			System.out.println("Comment submenu");
-			doYouWantToChange.printMenu();
-			doYouWantToChange.selectableMenuPoints();
-			break;
-		case "6":
 			System.out.println("Genre submenu");
 			doYouWantToChange.printMenu();
 			doYouWantToChange.selectableMenuPoints();
 			break;
-		case "7":
+		case "6":
 			mM.printMenu();
 			mM.selectableMenuPoints();
 			break;

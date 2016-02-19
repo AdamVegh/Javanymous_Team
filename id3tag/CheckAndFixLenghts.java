@@ -1,4 +1,4 @@
-package ID3Tag;
+package id3tag;
 
 public class CheckAndFixLenghts {
 	

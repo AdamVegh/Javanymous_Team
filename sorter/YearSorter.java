@@ -2,7 +2,7 @@ package sorter;
 
 import java.io.File;
 
-import ID3Tag.Id3TagMp3;;
+import id3tag.Id3TagMp3;;
 
 public class YearSorter extends Sorter {
 	

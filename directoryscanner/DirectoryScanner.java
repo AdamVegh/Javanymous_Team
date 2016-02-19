@@ -81,7 +81,7 @@ public class DirectoryScanner
 	}
 	
 	
-	public void listFiles()
+	public List<File> listFiles()
 	{
 		try
 		{
@@ -93,6 +93,7 @@ public class DirectoryScanner
 			{
 				System.out.println(mp3File);
 			}
+			return mp3Files;
 		}
 		catch (FileNotFoundException e)
 		{
@@ -102,5 +103,6 @@ public class DirectoryScanner
 		{
 			System.out.println(e.toString());
 		}
+		return mp3Files;
 	}
 }

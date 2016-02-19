@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+import sorter.*;
 
 public class UserInput
 {
@@ -47,7 +49,33 @@ public class UserInput
 	    }
 	}
     
+	public static String getPropertyInput() {
+		String propertyStr = "";
+		boolean propertyOK = false;
+		while (!propertyOK) {
+			System.out.print("Please type in the property: ");
+			for (String string : SorterMenu.listProperty) {
+				System.out.print(" | " + string);
+			}
+			System.out.println(" | ");
+			Scanner input = new Scanner(System.in);
+			propertyStr = SorterMenu.propertyChecker(input.nextLine().toLowerCase());
+			propertyOK = (propertyStr != "");
+		}
+		return propertyStr;
+	}
     
+	public static boolean getAscendingInput() {
+		String ascendingStr = "";
+		boolean ascendingOK = false;
+		while (!ascendingOK) {
+			System.out.println("Direction of soring: [A]scending or [D]escending");
+			Scanner input = new Scanner(System.in);
+			ascendingStr = input.nextLine().toLowerCase();
+			ascendingOK = (ascendingStr.equals("a") || ascendingStr.equals("d"));
+		}
+		return ascendingStr.equals("a") ? true : false;
+	}
 	
 	
 }

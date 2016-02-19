@@ -3,43 +3,17 @@ package sorter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import userinput.*;
 
 import id3tag.Id3TagMp3;
 
 public class SorterMenu {
+
+	public static String[] listProperty = {"title", "artist", "album", "year", "genre"};
 	
-	List<File> mp3List;
-	static String[] listProperty = {"title", "artist", "album", "year", "genre"};
-	
-	public SorterMenu(List<File> mp3List) {
-		this.mp3List = mp3List;
-		Boolean ascending = true;
+	public static void sorterMain(List<File> mp3List) {
 		
-		String propertyStr = "";
-		boolean propertyOK = false;
-		while (!propertyOK) {
-			System.out.print("Please type in the property: ");
-			for (String string : listProperty) {
-				System.out.print(" | " + string);
-			}
-			System.out.println(" | ");
-			Scanner input = new Scanner(System.in);
-			propertyStr = propertyChecker(input.nextLine().toLowerCase());
-			propertyOK = (propertyStr != "");
-		}
-		
-		String ascendingStr = "";
-		boolean ascendingOK = false;
-		while (!ascendingOK) {
-			System.out.println("Direction of soring: [A]scending or [D]escending");
-			Scanner input = new Scanner(System.in);
-			ascendingStr = input.nextLine().toLowerCase();
-			ascendingOK = (ascendingStr.equals("a") || ascendingStr.equals("d"));
-		}
-		ascending = ascendingStr.equals("a") ? true : false;
-		
-		Sorter sortedBy = sortedBy(propertyStr, ascending);
+		Sorter sortedBy = sortedBy(UserInput.getPropertyInput(), UserInput.getAscendingInput());
 		
 		mp3List.sort(sortedBy);
 		
@@ -56,7 +30,9 @@ public class SorterMenu {
 		
 	}
 	
-	public Sorter sortedBy(String property, boolean ascending) {
+	
+	
+	public static Sorter sortedBy(String property, boolean ascending) {
 		switch (property) {
 		case "title":
 			return new TitleSorter(ascending);
@@ -72,7 +48,7 @@ public class SorterMenu {
 		return null;
 	}
 	
-	public String propertyChecker(String property) {
+	public static String propertyChecker(String property) {
 		for (String string : listProperty) {
 			if (property.equals(string)) return property;
 		}
@@ -100,7 +76,7 @@ public class SorterMenu {
 		//String s = in.nextLine();
 		//System.out.println(s);
 		
-		new SorterMenu(sorterMP3);
+//		new SorterMenu(sorterMP3);
 	}
 	
 }

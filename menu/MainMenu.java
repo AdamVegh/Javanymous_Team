@@ -12,8 +12,13 @@ public class MainMenu
 		MainMenu subM = new MainMenu();
 		while(true)
 		{
-			subM.printMenu();
-			subM.selectableMenuPoints();
+			try{
+				subM.printMenu();
+				subM.selectableMenuPoints();
+			}catch(Exception e)
+			{
+				System.out.println();
+			}
 		}
 	}
 	
@@ -36,7 +41,7 @@ public class MainMenu
 	{
 		String menuPoint = userInput();
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
-		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
+		SorterSubMenu sorterPrintMenu = new SorterSubMenu();
 		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
 		M3USubmenu m3uSubmenu = new M3USubmenu();
 		
@@ -45,7 +50,11 @@ public class MainMenu
 		case "1":
 			System.out.println("Sort submenu");
 			sorterPrintMenu.printMenu();
-			sorterPrintMenu.selectableMenuPoints();
+			try {
+				sorterPrintMenu.selectableMenuPoints();
+			} catch(Exception e) {
+				System.out.println(e);
+			}
 			break;
 		case "2":
 			System.out.println("Modify submenu");

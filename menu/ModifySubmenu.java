@@ -36,7 +36,7 @@ public class ModifySubmenu
 		getLocationAndSetId3Tag();
 		int menuPoint = userInput();
 		MainMenu mM = new MainMenu();
-		SaveTagmenu doYouWantToChange = new SaveTagmenu();
+		SaveTagMenu doYouWantToChange = new SaveTagMenu();
 		
 		switch (menuPoint)
 		{

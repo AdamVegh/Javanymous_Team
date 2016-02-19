@@ -32,9 +32,6 @@ public class MP3JoinerUI {
 			System.out.println("An exception occoured during the process:");
 			System.out.println(exception.getMessage());
 		}
-		
-		System.out.println("Mikor fut le ez a sor?");
-//		consoleScanner.close(); -- it would close System.in as well -- NEVER close System.in
 	}
 	
 }

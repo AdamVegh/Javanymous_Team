@@ -42,6 +42,7 @@ public class ModifySubmenu
 		{
 		case 1:
 			System.out.println("Title submenu");
+			System.out.println(id3tag.getTitle());
 			String newTag = userInputNewData();
 			id3tag.setTitle(newTag);
 			doYouWantToChange.printMenu();
@@ -49,6 +50,7 @@ public class ModifySubmenu
 			break;
 		case 2:
 			System.out.println("Artist submenu");
+			System.out.println(id3tag.getArtist());
 			String newTag2 = userInputNewData();
 			id3tag.setArtist(newTag2);
 			doYouWantToChange.printMenu();
@@ -56,6 +58,7 @@ public class ModifySubmenu
 			break;
 		case 3:
 			System.out.println("Album submenu");
+			System.out.println(id3tag.getAlbum());
 			String newTag3 = userInputNewData();
 			id3tag.setAlbum(newTag3);
 			doYouWantToChange.printMenu();
@@ -63,6 +66,7 @@ public class ModifySubmenu
 			break;
 		case 4:
 			System.out.println("Year submenu");
+			System.out.println(id3tag.getYear());
 			String newTag4 = userInputNewData();
 			id3tag.setYear(newTag4);
 			doYouWantToChange.printMenu();
@@ -70,6 +74,7 @@ public class ModifySubmenu
 			break;
 		case 5:
 			System.out.println("Comment submenu");
+			System.out.println(id3tag.getComment());
 			String newTag5 = userInputNewData();
 			id3tag.setComment(newTag5);
 			doYouWantToChange.printMenu();
@@ -77,6 +82,7 @@ public class ModifySubmenu
 			break;
 		case 6:
 			System.out.println("Genre submenu");
+			System.out.println(id3tag.getGenre());
 			String newTag6 = userInputNewData();
 			id3tag.setGenre(newTag6);
 			doYouWantToChange.printMenu();

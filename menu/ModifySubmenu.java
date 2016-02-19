@@ -27,7 +27,7 @@ public class ModifySubmenu
 	{
 		String menuPoint = userInput();
 		MainMenu mM = new MainMenu();
-		SaveTagMenu doYouWantToChange = new SaveTagMenu();
+		SaveTagmenu doYouWantToChange = new SaveTagmenu();
 		
 		switch (menuPoint)
 		{

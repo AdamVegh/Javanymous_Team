@@ -1,15 +1,12 @@
 package connection;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
 import java.io.OutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
 import java.net.Socket;
-
-import mp3_joiner.MP3JoinerUI;
 
 public class Client /*Implements Runnable #OR# Extends Thread*/ {
 	private static final String IP = "localhost";

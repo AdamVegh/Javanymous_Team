@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import exceptions.PossibleExceptions;
 import id3tag.Id3TagMp3;
 
-public class SaveTagmenu
+public class SaveTagMenu
 {
 
 

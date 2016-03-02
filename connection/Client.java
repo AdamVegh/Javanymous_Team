@@ -43,6 +43,33 @@ public class Client /*Implements Runnable #OR# Extends Thread*/ {
 		});
 	}
 	
+	public void run() {
+		try {
+			setupConnection();
+			createMenu();
+			running = true;
+			while (running) {
+				menu.launch();
+			}
+		} catch (ClassCastException e) {
+			ErrorPrinter.printErrorMessage("an Object cannot be casted to the appropriate Class", e, false, true);
+		} catch (ClassNotFoundException e) {
+			ErrorPrinter.printErrorMessage("Class of an Object cannot be found", e, false, true);
+		} catch (IOException e) {
+			ErrorPrinter.printErrorMessage("IOException occoured", e, true, true);
+		} finally {
+			if (running) {
+				tryToCloseConnection();
+			}
+		}
+	}
+	
+	private void finish() throws IOException {
+		System.out.println("Shutting down");
+		closeConnection();
+		running = false;
+	}
+	
 	private void closeConnection() throws IOException {
 		oos.close();
 		ois.close();
@@ -64,33 +91,6 @@ public class Client /*Implements Runnable #OR# Extends Thread*/ {
 		}
 	}
 	
-	private void finish() throws IOException {
-		System.out.println("Shutting down");
-		closeConnection();
-		running = false;
-	}
-	
-	public void run() {
-		try {
-			setupConnection();
-			createMenu();
-			running = true;
-			while (running) {
-				menu.launch();
-			}
-		} catch (ClassCastException e) {
-			ErrorPrinter.printErrorMessage("an Object cannot be casted to the appropriate Class", e, false, true);
-		} catch (ClassNotFoundException e) {
-			ErrorPrinter.printErrorMessage("Class of an Object cannot be found", e, false, true);
-		} catch (IOException e) {
-			ErrorPrinter.printErrorMessage("IOException occoured", e, true, true);
-		} finally {
-			if (running) {
-				tryToCloseConnection();
-			}
-		}
-	}
-
 	public static void main(String[] args) {
 		try {
 			Client client = new Client(IP, TCP);

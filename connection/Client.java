@@ -3,11 +3,18 @@ package connection;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
 import java.net.Socket;
+
+import mp3_joiner.MP3JoinerUI;
 
 public class Client /*Implements Runnable #OR# Extends Thread*/ {
 	private static final String IP = "localhost";
-	private static final int TCP = 8000;
+	private static final int TCP = 678;
+	private static final int MP3_BUFFER_SIZE = 1 << 12; 
 	
 	private String iP;
 	private int tCP;
@@ -33,8 +40,16 @@ public class Client /*Implements Runnable #OR# Extends Thread*/ {
 	
 	private void createMenu() {
 		menu = new SubMenu("Main menu", "Please, choose what you would like to do.");
+		
+		/*menu.addItem(new MenuItem("Joiner") {
+			@Override
+			public boolean launch() throws ClassCastException, ClassNotFoundException, IOException {
+				
+				return false;
+			}
+		});*/
+		
 		menu.addItem(new MenuItem("Exit") {
-			
 			@Override
 			public boolean launch() throws ClassCastException, ClassNotFoundException, IOException {
 				finish();
@@ -63,6 +78,19 @@ public class Client /*Implements Runnable #OR# Extends Thread*/ {
 			}
 		}
 	}
+	
+	public void sendFile(File file) throws IOException
+    {
+        OutputStream dos = socket.getOutputStream();
+        FileInputStream fis = new FileInputStream(file);
+        byte[] buffer = new byte[MP3_BUFFER_SIZE];
+        int read;
+        while ((read = fis.read(buffer)) > 0)
+        {
+            dos.write(buffer, 0, read);
+        }
+        fis.close();
+    }
 	
 	private void finish() throws IOException {
 		System.out.println("Shutting down");

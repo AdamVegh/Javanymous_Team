@@ -31,7 +31,8 @@ public class MainMenu
 			System.out.println("2. Modify");
 			System.out.println("3. M3U");
 			System.out.println("4. Directory scanner");
-			System.out.println("5. Exit");
+			System.out.println("5. ID3Tag a current file");
+			System.out.println("6. Exit");
 			System.out.println("#-----------------------------------#");
 			System.out.println();
 	}
@@ -41,9 +42,10 @@ public class MainMenu
 	{
 		String menuPoint = userInput();
 		ModifySubmenu modifyPrintMenu = new ModifySubmenu();
-		SorterSubMenu sorterPrintMenu = new SorterSubMenu();
+		SorterSubmenu sorterPrintMenu = new SorterSubmenu();
 		DirectoryScannerSubmenu directoryScanning = new DirectoryScannerSubmenu();
 		M3USubmenu m3uSubmenu = new M3USubmenu();
+		ID3TagDisplayerSubmenu IDS = new ID3TagDisplayerSubmenu();
 		
 		switch (menuPoint)
 		{
@@ -72,6 +74,11 @@ public class MainMenu
 			directoryScanning.selectableMenuPoints();
 			break;
 		case "5":
+			System.out.println("ID3Tag submenu");
+			IDS.printMenu();
+			IDS.selectableMenuPoints();
+			break;
+		case "6":
 			System.exit(0);
 			break;
 		default:

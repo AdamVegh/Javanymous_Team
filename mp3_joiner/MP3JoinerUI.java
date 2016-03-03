@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class MP3JoinerUI {
 	
-	public void mp3JoinerGetInputFromUser()
+	public File mp3JoinerGetInputFromUser()
 	{
 		Scanner consoleScanner = new Scanner(System.in);
 		File m3uFile;
@@ -31,6 +31,7 @@ public class MP3JoinerUI {
 		catch (JoinerException exception) {
 			System.out.println(exception.getMessage());
 		}
+		return m3uFile;
 	}
 	
 }

@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import mp3_joiner.MP3Joiner;
 
 public class JavanymousServer
 {
-	private final static String	PATH_TO_SAVE	= "C:\\test\\";
-	private final static String	JOINED_FILE		= "C:\\test\\kuka.mp3";
+	private final static String	PATH_TO_SAVE = "C:\\test\\";
+	private final static String	JOINED_FILE	= "C:\\test\\kuka.mp3";
 
 	@SuppressWarnings ("unchecked")
 	public JavanymousServer ()
@@ -26,6 +27,7 @@ public class JavanymousServer
 		ServerSocket serverSocket = null;
 		Socket clientSocket = null;
 		ObjectInputStream ois = null;
+		ObjectOutputStream oos = null;
 
 			try
 			{
@@ -33,6 +35,7 @@ public class JavanymousServer
 				System.out.println("Waiting for client...");
 				clientSocket = serverSocket.accept();
 
+				oos = new ObjectOutputStream(clientSocket.getOutputStream());
 				ois = new ObjectInputStream(clientSocket.getInputStream());
 
 				Object command = ois.readObject();
@@ -49,8 +52,13 @@ public class JavanymousServer
 					}
 					File finalFile = new File(JOINED_FILE);
 					MP3Joiner.joinFiles(serverFiles, finalFile);
+					
+					oos.writeObject(finalFile.length());
 					sendFile(finalFile, clientSocket);
+					oos.close();
+					ois.close();
 				}
+				
 				else if (command.equals(Command.SORT))
 				{
 					// TODO
@@ -58,11 +66,9 @@ public class JavanymousServer
 				else if (command.equals(Command.EXIT))
 				{
 					System.out.println("SERVER SHUTDOWN!");
-					ois.close();
 					clientSocket.close();
 					serverSocket.close();
 				}
-
 			}
 			catch (Exception e)
 			{
@@ -80,15 +86,18 @@ public class JavanymousServer
 		int read = 0;
 		int totalRead = 0;
 		long remaining = fileSize;
+		double percentage;
 		while ((read = dis.read(buffer, 0, Math.min(buffer.length, (int) remaining))) > 0)
 		{
 			totalRead += read;
 			remaining -= read;
-			System.out.println("read " + totalRead + " bytes.");
+//			System.out.println("read " + totalRead + " bytes.");
+			percentage = ((double)totalRead)/(double)(totalRead+remaining)*100;
+			System.out.println(String.format("%.1f", percentage) + " %");
 			fos.write(buffer, 0, read);
 		}
 
-		fos.close();
+//		fos.close();
 	}
 
 	public void sendFile(File file, Socket s) throws IOException
@@ -102,10 +111,11 @@ public class JavanymousServer
 			dos.write(buffer, 0, read);
 		}
 
-		fis.close();
+//		fis.close();
 		// dos.close();
 	}
 
+	
 	public static void main(String [ ] args)
 	{
 		new JavanymousServer();

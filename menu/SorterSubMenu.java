@@ -11,7 +11,7 @@ import directoryscanner.DirectoryScanner;
 import sorter.*;
 import exceptions.NotDirectoryException;
 
-public class SorterSubMenu
+public class SorterSubmenu
 {
 	public void printMenu()
 	{
